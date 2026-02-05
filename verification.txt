@@ -1,0 +1,5 @@
+Line: S4, Station: Buchenau, Scheduled: 15:51, Direction: 'Geltendorf', Delay: 0
+Line: S4, Station: Buchenau, Scheduled: 16:08, Direction: 'München', Delay: 1
+Line: S4, Station: Buchenau, Scheduled: 16:15, Direction: 'Geltendorf', Delay: 0
+Line: S4, Station: Buchenau, Scheduled: 16:28, Direction: 'München', Delay: 2
+Line: S4, Station: Fürstenfeldbruck, Scheduled: 16:07, Direction: 'Geltendorf', Delay: 2

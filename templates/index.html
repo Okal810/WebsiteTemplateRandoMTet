@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Bahn Verspätungs-Monitor</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #00305d; /* DB Blue */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #00305d;
+            padding: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        h2 {
+            margin-top: 0;
+            color: #00305d;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .on-time { background: #d4edda; color: #155724; }
+        .late { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>S-Bahn Verspätungs-Monitor</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Wochentags-Durchschnitt</h2>
+            <div id="plot"></div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Tagesbericht (Heute)</h2>
+                <pre id="daily-report">{{ daily_report }}</pre>
+            </div>
+            <div class="card">
+                <h2>Wochenbericht</h2>
+                <pre id="weekly-report">{{ weekly_report }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var graph = {{ graph_json | safe }};
+        Plotly.newPlot('plot', graph.data, graph.layout, {responsive: true});
+    </script>
+</body>
+</html>

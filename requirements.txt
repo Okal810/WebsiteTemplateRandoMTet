@@ -1,0 +1,9 @@
+torch
+requests
+numpy
+pyhafas
+mvg
+matplotlib
+flask
+plotly
+pandas
